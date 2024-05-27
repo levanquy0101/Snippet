@@ -1,0 +1,116 @@
+{
+	"Table One JSX": {
+		"scope": "javascript,typescript,javascriptreact",
+		"prefix": "LVQ-Table-One-JSX",
+		"body":[
+			"<table className='table'>",
+			"    <thead>",
+			"        <tr>",
+			"            <th>Item</th>",
+			"            <th>Item</th>",
+			"            <th>Item</th>",
+			"            <th>Item</th>",
+			"        </tr>",
+			"    </thead>",
+			"    <tbody>",
+			"        {${1:datas}.map((item, index) => (",
+			"            <tr key={item.id}>",
+			"                <td>{++index}</td>",
+			"                <td>{item.id}</td>",
+			"                <td>{item.name}</td>",
+			"                <td>",
+			"                    <button onClick={()=> changeInfoUpdate(item)} className=\"btn-update\">Update</button>",
+			"                    <button onClick={() => changeInfoDelete(item)} className=\"btn-delete\">Delete</button>",
+			"                </td>",
+			"            </tr>",
+			"        ))",
+			"        }",
+			"    </tbody>",
+			"</table>"
+		  ],
+		"description": "Table mẫu đơn giản có cập nhập và xóa"
+	},
+	"Modal Delete JSX": {
+		"scope": "javascript,typescript,javascriptreact",
+		"prefix": "LVQ-Modal-Delete-JSX",
+		"body":[
+			"{$1.id &&",
+			"    <div class=\"modal-content\">",
+			"        <span class=\"close\">&times;</span>",
+			"        <p>Are you sure you want to delete this item?</p>",
+			"        <div class=\"button-container\">",
+			"            <button class=\"button delete-btn\" onClick={removeItem}>Delete</button>",
+			"            <button class=\"button cancel-btn\" onClick={()=>set$1({})}>Cancel</button>",
+			"        </div>",
+			"    </div>",
+			"}    "
+		  ],
+		"description": "Modal xóa "
+	},
+	"GET ALL API": {
+		"scope": "javascript,typescript,javascriptreact",
+		"prefix": "LVQ-GET-ALL-API-JSX",
+		"body": [
+		  "export const getAll$2 = async () => {",
+		  "    try {",
+		  "        const temp = await axios.get(\"http://localhost:8080/$1\");",
+		  "        return temp.data;",
+		  "    } catch (e) {",
+		  "        console.log(e)",
+		  "        return [];",
+		  "    }",
+		  "}"
+		],
+		"description": "Lấy tất cả thông tin từ danh sách"
+	},
+	"SAVE API": {
+		"scope": "javascript,typescript,javascriptreact",
+		"prefix": "LVQ-SAVE-API-JSX",
+		"body": [
+		  "export const save$2 = async (item) => {",
+		  "    try {",
+		  "        const temp = await axios.post(\"http://localhost:8080/$1\",item);",
+		  "        return temp.data;",
+		  "    } catch (e) {",
+		  "        console.log(e)",
+		  "        throw new Error(\"Không thể thêm mới!\")",
+		  "    }",
+		  "}"
+		],
+		"description": "Thêm mới một đối tượng vào danh sách"
+	},
+	"DELETE API": {
+		"scope": "javascript,typescript,javascriptreact",
+		"prefix": "LVQ-DELETE-API-JSX",
+		"body": [
+		  "export const remove$2 = async (id) => {",
+		  "    try {",
+		  "        const temp = await axios.delete(`http://localhost:8080/$1/$ {id}`);",
+		  "        return temp.data;",
+		  "    } catch (e) {",
+		  "        console.log(e)",
+		  "        console.warn(\"Không thể xóa đối tượng!\")",
+		  "    }",
+		  "}",
+		  ""
+		],
+		"description": ""
+	},
+	"UPDATE API": {
+		"scope": "javascript,typescript,javascriptreact",
+		"prefix": "LVQ-UPDATE-API-JSX",
+		"body": [
+		  "export const updatePut$2 = async (id,item) => {",
+		  "    try {",
+		  "        const temp = await axios.put(`http://localhost:8080/$1/$ {id}`,item);",
+		  "        return temp.data;",
+		  "    } catch (e) {",
+		  "        console.log(e)",
+		  "        throw new Error(\"Không thể cập nhật!\")",
+		  "    }",
+		  "}",
+		  ""
+		],
+		"description": ""
+	  },
+}
